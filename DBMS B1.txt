@@ -1,0 +1,48 @@
+1-------
+test> use articledb
+
+articledb> db.ar.insertOne(
+{
+ title:"C",
+ content:"Procedural language",
+ author:"Yashwant Kanetkar",
+ author_age:25,
+ DOP:"10/10/2012",
+ category:"IT",
+ comment:
+ [
+ {
+ name:"Sangesh",
+ remarks:"Very Good"
+ },
+ {
+ name:"Ravi",
+ remarks:"Nice"
+ }
+ ]
+ }
+ )
+
+---------
+2
+articledb> db.ar.findOne();
+
+--------
+3
+articledb> db.ar.findOne({author:"Yashwant Kanetkar"});
+
+----------
+4
+articledb> db.ar.update({title:"C", "comment.name":"Ravi"}, {$set:{"comment.$.remarks":"Good"}});
+
+----------
+5
+articledb> db.ar.update({title:"C"},{$push:{comment:{name:"Hope",remarks:"Bad"}}});
+
+-------------
+6
+articledb> db.ar.deleteMany({author_age:{$lt:18}});
+
+-------------
+7
+articledb> db.ar.remove({});
